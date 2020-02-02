@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>05</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,6 +32,7 @@
 
 
 <!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -51,14 +52,34 @@
 'use strict';
 
 
-/**/
+/*composing components*/
+/*Basically means like callback within callback*/
+const IkListTwo = () => <li>iKtwo</li>;
 
 
+const IkTopLevelElement = iKpropsObject => (
+	<ol>
+		<li>iKone</li>
+		<IkListTwo />
+		<li>{iKpropsObject.children}</li>
+	</ol>
+);	/*1+*/
 
 
-/*1+
-2+
-3+
+ReactDOM.render(
+	<IkTopLevelElement> iKthree </IkTopLevelElement>,	/*2+*/
+	iKdivContainer
+);
+ /*OP 
+ 	iKone
+	iKtwo
+	iKthree
+ */ /*3+*/
+
+/*1+ notice I insert component callback function within.
+2+ always recommended to only insert top level element within the final renering.
+2+ 'iKthree' argument will be inserted in property 'children' within the iKpropsObject .
+3+ remember the output list is on the html page <ol> element.
 4+
 5+
 6+

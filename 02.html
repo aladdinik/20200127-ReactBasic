@@ -32,7 +32,7 @@
 
 
 <!--1+ -->
-<div id='iKreactRootDiv'>iK will be overwritten by react</div>
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -52,24 +52,29 @@
 'use strict';
 
 
-/*ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree */
+/*c2t ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree */
 const iKjsxElement = (	/*2+*/
-	<div title ='iKtitle'>
-		<h1>iKhead</h1>
-		<p>iKparagraph</p>
+	<div title='iKtitle'>
+		<h1>iKhead string</h1>
+		<p>iKparagraph string</p>
 	</div>
 );
 
 /*ReactDOM.render( iKelement, iKparentNode ); */
 ReactDOM.render(
 	iKjsxElement,
-	document.getElementById('iKreactRootDiv')
+	document.getElementById('iKdivContainer') /*3+*/
 );
 
 
 /*1+ the element that react element will go into.
-2+ VIP you should use parenthesis when using jsx elements, as it will be easier to type contains the element within.
-3+
+2+ VIP you should use parenthesis when using jsx elements, as it will be easier to understand and type.
+	+\ it can still work without parenthesis.
+2+ VIP you can have only one parent jsx element tag stored in a variable.
+	+\ but you are allowed to have as many nested element as you want.
+3+ VIP any content within the iKparentNode element will be replaced by iKelement .
+	+\ BIM you will notice when the page loads, you will see content of iKparentNode first, and than being replace by iKelement.
+		+\ it is not ideal, so if possible try to avoid putting any content within iKparentNode element prior to react iKelement .
 4+
 5+
 6+
