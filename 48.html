@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>08</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,6 +32,7 @@
 
 
 <!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -51,21 +52,60 @@
 'use strict';
 
 
-/**/
+/*state / component class function */
+/*VIP have to use class function to create a state.
++\ class componenet can do everything component function can, but also able to use state.
+	+\ state allows you to change and keep up to date with changeing data.
+	
+*/
+class IkcomponentClass extends React.Component {  /*1+*/
+	constructor() {		/*2+*/
+		super();		/*3+*/
+		this.state = {	/*4+*/
+			iKproperty: "iKpropertyValue1"	/*5+*/
+		}
+	};
 
+	render() {		/*6+*/
+		console.log(this);	/*7+*/
+		return ( <h1>{this.state.iKproperty}</h1> )  /*8+*/
+	}
+}; /*END IkcomonentClass */
 
+ReactDOM.render(
+	<IkcomponentClass iKarg="iKargValue1" />,	/*9+*/
+	iKdivContainer
+);
 
-
-/*1+
-2+
-3+
-4+
-5+
-6+
-7+
-8+
+/*1+ VIP you must use capital in naming class function.
+1+ VIP must alway extends class to React.Component .
+2+ VIP you use the constructor method to insert your state properties within the React.Component .
+	+\ VIP you can still receive props object arguments from the component class callback function.
+		+\ iKVIP you will need to insert the props object argument within a new property in state object for it to become state object.
+			+\ iKBIM but you can still use the prop argument without it though, but it will be stateless.
+2+ BIM alternatively you could scrap typing the constructor method, and just insert the state object directly to the class.
+	+\	%%%%%
+...
+state = {
+	iKproperty: "iKpropertyValue1"
+};
+...
+	=eg.
+	+\ however there are some browsers that does not yet fully support this syntax just yet, so for the time being it is best to use the constructor method.
+3+ VIP you must include the super() callback to include the React.Component class.
+	+\ only when you are using the constuctor method but not needed for non constructor method for state objects.
+4+ VIP must always use the this.state property to define your state properties.
+5+ this is state props object, which can be reassigned if needed be.
+6+ VIP render() returns the created element within the class.
+	+\ you could use render(){} method only in the class if you just want to return a element.
+7+ showing the class object, including the component callback argument value.
+8+ VIP you must use this.state to access state properties.
+9+ state callback function works just like props callback function .
 9+
 10+
+state = {
+	iKproperty: "iKpropertyValue1"
+}
 */
 
 

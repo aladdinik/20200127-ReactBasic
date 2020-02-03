@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>06</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,7 +32,7 @@
 
 
 <!-- -->
-<div id='iKdivContainer'>iK will be overwritten by react</div>
+<div class='iKclassContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -52,29 +52,22 @@
 'use strict';
 
 
-/*Handling events / onClick event */
-
-class IkcomponentClass extends React.Component {
-	iKmethod1() {
-		console.log("iKclicky")
-	}
-
-	render() {
-		return (
-			<h1 onClick={this.iKmethod1}>{77}</h1>
-		)
-	}
-}; /*END IkcomonentClass */
+/*Passing anonymous function through props argument using jsx expression */
+/*iK demo is to show the flexibility of the jsx expression */
+function IkHeader (iKpropsObject) {
+	return (
+		<h1>{ iKpropsObject.iKnumber(4) }</h1>  /*1+*/
+	);
+};
 
 ReactDOM.render(
-	<IkcomponentClass iKarg="iKargValue1" />,
-	iKdivContainer
-);
+	<IkHeader iKnumber={ iKnumberPar => iKnumberPar + 6 }/>, /*2+*/
+	document.getElementsByClassName("iKclassContainer")[0]  /*3+*/
+); /*OP 10 (appended on the page) */
 
-
-/*1+
-2+
-3+
+/*1+ BIM the prop object (iKnumber) that was pass through was an anonymous function so you use it as a callback function as you normally would do.
+2+ BIM basically you can pass any js value arguments to the component props callback function, including anonymous function.
+3+ You can use any method to collect DOM node on the html element page.
 4+
 5+
 6+
