@@ -52,9 +52,9 @@
 'use strict';
 
 
-/*create a react component with function (component function) / react component callback function / props object as argument */
+/*Create a react component with function (component function) / react component callback function / props object as argument */
 /*The simplest way to define a component is to write a JavaScript function*/
-function IkcomponentFunc(iKpropsObject) {	/*1+*/
+function IkComponentFunction(iKpropsObject) {	/*1+*/
 	console.log(iKpropsObject); /*OP props object*/ /*2+*/
 
 	return (
@@ -66,9 +66,9 @@ function IkcomponentFunc(iKpropsObject) {	/*1+*/
 };
 
 const iKdivElement = (
-	<IkcomponentFunc iKpropsName="iKpropsValue">
+	<IkComponentFunction iKpropsName="iKpropsValue">
 		iKchildrenElement
-	</IkcomponentFunc>
+	</IkComponentFunction>
 ); /*4+*/
 
 ReactDOM.render(
@@ -78,12 +78,12 @@ ReactDOM.render(
 
 
 /*1+ VIP you must always start component function name with a capital letter.
-	+\ React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <IkcomponentFunc /> represents a component and requires IkcomponentFunc to be in scope.
+	+\ React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <IkComponentFunction /> represents a component and requires IkComponentFunction to be in scope.
 		+\ so if you do not start your components with capitals letters than it will not work because react will assume it is a html element tag.
-	+\ it is best to name component function to what ever element you are going to create for easier understanding of the code, such as Footer / Header / Main / Navigation / etc...
+	+\ it is best to name component function to what ever element you are going to create for easier understanding of the code, such as 'Footer' / 'Header' / 'Main' / 'Navigation' / etc...
 1+ VIP react collects argument as the props object.
 	+\ often argument is just called props universally.
-1+ you could write component function in arrow function, to be more concise, and eliminating the return keyword.
+1+ you could write component function in arrow function, to be more concise, and eliminating the return keyword. But not much difference besides that.
 2+ OP {iKpropsName: "iKpropsValue", children: "iKchildrenElement"} .
 	+\ if you installed react developer tools, than you should see props object without having to use console.log() .
 3+ you can use the props object however you want to use on your element.
@@ -101,7 +101,7 @@ ReactDOM.render(
 			+\ VIP iKchildrenElement will also become props object for the function, and be given the 'children' property name.
 				+\ iKBIM you will not see 'iKchildrenElement' string on the page because i did not use iKpropsObject.children within my function to add it to the <div> element.
 4+	%%%%%
-<IkcomponentFunc iKpropsName="iKpropsValue" />
+<IkComponentFunction iKpropsName="iKpropsValue" />
 =VIP if you do not plan to use nested element for the react callback function, than you can just use self closing tag without the additional typing.
 4+ iK not required to store the react callback function in a variable, but easier to understand here.
 5+

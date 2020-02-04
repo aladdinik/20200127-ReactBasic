@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>10</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,6 +32,7 @@
 
 
 <!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -51,17 +52,61 @@
 'use strict';
 
 
-/**/
+/*Common ways to define this keyword for methods to connect with react class objct within the component class function */
+/*react class object will contain react properties that can be use, such as props object.
+	+\ it is important for method functions to connect with react class object so that you can fully access react objects such as props and state, and to avoid future errors.
++\ iK there might be other ways to connect to 'this' , but these are the main common ways to do it.
+*/
+class IkcomponentClass extends React.Component {
+	constructor() {
+		super()
+		console.log(this) /*OP react class object */ /*1+*/
+	};
+
+	/* iKmethod1 */ /*2+*/
+	iKmethod1 = () => {
+		console.log(this);
+	};
+
+	/* iKmethod2 */ /*3+*/
+	iKmethod2() {
+		console.log(this);
+	};
+
+	/* iKmethod3 */ /*4+*/
+	iKmethod3 = () => {
+		console.log(this);
+	};
+
+	render() {
+		console.log(this); /*OP react class object */ /*5+*/
+
+		return (
+			<div>
+				<h1 onClick={ this.iKmethod1 }> iKmethod1 </h1>
+
+				<h1 onClick={ () => this.iKmethod2() }> iKmethod2 </h1>
+
+				<h1 onClick={ this.iKmethod3.bind(this) }> iKmethod3 </h1>
+			</div>
+		); 			/*6+*/
+	}; /*END render() */
+}; /*END IkcomonentClass */
 
 
+ReactDOM.render(
+	<IkcomponentClass />,
+	iKdivContainer
+);
 
 
-/*1+
-2+
-3+
-4+
-5+
-6+
+/*1+ VIP you must use super() within constructor for 'this' to work, otherwise error will occur for 'this' .
+2+ VIP using arrow function for the method will default 'this' to the react class object, so therefore you can simply just use this.iKmethod1 in any scope in the class.
+3+ VIP wrapping this.iKmethod2() in arrow function when called (eg. () => this.iKmethod2() ) will also work fine, if your method is non-arrow function.
+4+ VIP calling the method function using this.iKmethod.bind(this) under a scope that is already attach to 'this' react class object will work fine tpp/
+5+ iKVIP the render(){} method 'this' will always default to the react class object.
+5+ VIP also anything that is outside the return scope will also trigger again if called. So basically when a click event is called than render() method will trigger too.
+6+ all 3 click events will result to react class object.
 7+
 8+
 9+

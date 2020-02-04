@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title>08</title>
+    <title>11</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -52,60 +52,66 @@
 'use strict';
 
 
-/*state / component class function */
-/*VIP have to use class function to create a state.
-+\ class componenet can do everything component function can, but also able to use state.
-	+\ state allows you to change and keep up to date with changeing data.
-	
-*/
-class IkcomponentClass extends React.Component {  /*1+*/
-	constructor() {		/*2+*/
-		super();		/*3+*/
-		this.state = {	/*4+*/
-			iKproperty: "iKpropertyValue1"	/*5+*/
-		}
+/*Updating or modifying state object / with the use of props callback argument / .setState() */
+const iKarrayObject1 = [	/*1+*/
+	{
+		"name": "Alpha",
+		"inoffice": "iKvalue1",
+		id: 1
+	},
+	{
+		"name": "Bravo",
+		"inoffice": "iKvalue2",
+		id: 2
+	}
+]; /*END iKarrayObject1 */
+
+
+class IkClassComponent extends React.Component {
+	state = {	/*2+*/
+		iKproperty1: this.props.iKarg1[0].inoffice,	/*3+*/
+		iKproperty2: this.props.iKarg1[1].name
 	};
 
-	render() {		/*6+*/
-		console.log(this);	/*7+*/
-		return ( <h1>{this.state.iKproperty}</h1> )  /*8+*/
-	}
-}; /*END IkcomonentClass */
+	iKmethod1 = () => {
+		this.setState( iKpreviousState => {	/*4+*/
+			return {		/*5+*/
+				iKproperty1: 'iKreassignment1',  /*6+*/
+				iKproperty2: iKpreviousState.iKproperty2.toUpperCase()
+			};
+		});
+	};
+
+	render() {
+		return (
+			<h1 onClick={this.iKmethod1}> iKheaderElement </h1>
+		);
+	};
+}; /*END IkclassComponent */
 
 ReactDOM.render(
-	<IkcomponentClass iKarg="iKargValue1" />,	/*9+*/
+	<IkClassComponent iKarg1={iKarrayObject1} />,
 	iKdivContainer
 );
 
-/*1+ VIP you must use capital in naming class function.
-1+ VIP must alway extends class to React.Component .
-2+ VIP you use the constructor method to insert your state properties within the React.Component .
-	+\ VIP you can still receive props object arguments from the component class callback function.
-		+\ iKVIP you will need to insert the props object argument within a new property in state object for it to become state object.
-			+\ iKBIM but you can still use the prop argument without it though, but it will be stateless.
-2+ BIM alternatively you could scrap typing the constructor method, and just insert the state object directly to the class.
-	+\	%%%%%
-...
-state = {
-	iKproperty: "iKpropertyValue1"
-};
-...
-	=eg.
-	+\ however there are some browsers that does not yet fully support this syntax just yet, so for the time being it is best to use the constructor method.
-3+ VIP you must include the super() callback to include the React.Component class.
-	+\ only when you are using the constuctor method but not needed for non constructor method for state objects.
-4+ VIP must always use the this.state property to define your state properties.
-5+ this is state props object, which can be reassigned if needed be.
-6+ VIP render() returns the created element within the class.
-	+\ you could use render(){} method only in the class if you just want to return a element.
-7+ showing the class object, including the component callback argument value.
-8+ VIP you must use this.state to access state properties.
-9+ state callback function works just like props callback function .
+/*1+ just some mock data I will demo with.
+2+ notice I am setting state without the constructor method. However it is usually recommended to use the constructor method.
+3+ iK you can name or add as many property you need in state.
+3+ the argument is from the props object argument given in the component callback.
+4+ VIP you must use this.setState() method when you want to modify the state properties.
+	+\ VIP you cannot modify state object by normal reassignment, you must use .setState() .
+		+\ this.state.iKproperty1 = "iKreassignment1" =eg. this will not work.
+4+ VIP use anonymous function within .setState() to change state, as the resulted will take immediate effect.
+	+\ if you do not use the anonymous function than any change result of the state will behave asynchronously which can delay things.
+	+\ anonymous function is optional, but it is not recommended.
+	+\ VIP iKpreviousState is the same as this.state property, so use this when you need it for any reassignment.
+5+ VIP remember you have to return an object containing the properties you would like to modify.
+	+\ alternatively when using arrow function, you can omit the 'return' keyword, but you must include parenthesis to wrap the state object.
+6+ choose the property value you would like to change in state.
+7+
+8+
 9+
 10+
-state = {
-	iKproperty: "iKpropertyValue1"
-}
 */
 
 

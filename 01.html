@@ -57,7 +57,7 @@
 'use strict';
 
 
-/* c2t setting up react and jsx (babel) / React.createElement() / jsx html elements */
+/* Setting up react and jsx (babel) / React.createElement() / jsx html elements */
 /*Using non-jsx to create element */
 	/*React.createElement( 'iKelement', {iKpropName: iKpropValue}, 'iKchildrensElement' ) */
 const iKreactElement = React.createElement(
@@ -69,24 +69,24 @@ const iKreactElement = React.createElement(
 console.log(iKreactElement); /*OP react element object of the element */ /*6+*/
 
 
-/*Using jsx to create element */
+	/*Using jsx to create element */
 const iKjsxElement = <h1 className='iKclass2'>iK children string 2</h1>; /*7+*/
 
 console.log( iKjsxElement ); /*OP react element object of the element */ /*8+*/
 
 
-/*1+ 2 react cdn is required.
+/*1+ two react cdn is required.
 	+\ babel cdn is optional, but is required if you want to use jsx.
 2+ if you are using babel , than you will need to place type='text/babel' in your js files.
-	+\ you will get a warning from the console, suggesting you precompiled your bable files into js in the final production.
+	+\ you will get a warning from the console, suggesting you precompiled your babel files into js in the final production.
 3+ element you want to create
 4+ optional props you want to insert.
-4+ it is basically like enter html attribute you want to insert in the element.
+4+ it is similar to entering html attribute you want to insert in the element.
 	+\ VIP you have to use js reserve keyword to create html attribute, and not the actual html attribute keywords.
 		+\ 'className' instead of 'class'	=eg.
 			+\ iKVIP from my experiment, it seems to work fine if I just use regular html attribute names, which is the opposite of what treehouse videos is saying.
 				+\ however best to stick to recommended advice.
-		+\ could have use title as prop to create popup title.
+		+\ eg. could have use title as prop to create popup title.
 5+ insert content you want to insert in the element.
 	+\ VIP including nested variable element if you wanted to.
 6+ the object basically describe the dom element node.
