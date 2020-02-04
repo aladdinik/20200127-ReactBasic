@@ -96,13 +96,13 @@ ReactDOM.render(
 		+\ VIP props object argument must always be type as keys.
 			+\ VIP you can name whatever property name you want (that makes context sense) as it will be part of the props object.
 				+\ VIP the js camelCase no longer applies within component callback function.
-			+\ VIP you can also use jsx expression for iKpropValue.
-		+\ VIP iKchildrenElement can be almost anything, it could be another jsx html element / jsx expression / component callback function / etc…
-			+\ VIP iKchildrenElement will also become props object for the function, and be given the 'children' property name.
+			+\ BIM you can also use jsx expression for iKpropValue.
+		+\ BIM iKchildrenElement can be almost anything, it could be another jsx html element / jsx expression / component callback function / etc…
+			+\ BIM iKchildrenElement will also become props object for the function, and be given the 'children' property name.
 				+\ iKBIM you will not see 'iKchildrenElement' string on the page because i did not use iKpropsObject.children within my function to add it to the <div> element.
 4+	%%%%%
 <IkComponentFunction iKpropsName="iKpropsValue" />
-=VIP if you do not plan to use nested element for the react callback function, than you can just use self closing tag without the additional typing.
+=eg. if you do not plan to use nested element for the react callback function, than you can just use self closing tag without the additional typing.
 4+ iK not required to store the react callback function in a variable, but easier to understand here.
 5+
 6+

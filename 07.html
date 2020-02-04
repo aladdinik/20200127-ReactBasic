@@ -52,10 +52,9 @@
 'use strict';
 
 
-/*inserting data and iterate through component callback to gain elements / react key property to identify each data */
+/*Inserting data and iterate through component callback to gain elements / react key property to identify each data */
 /*It is important for react to identify elements that is being iterated so that it can prevent duplicates.
-	+\ BIM React manages what gets rendered to the DOM. In order for this process to be fast and efficient, React needs a way to quickly know which items were changed, added, or removed. For this, React gives elements a special built-in prop named key. A key is a unique identifier that gives React a way to quickly and reliably identify an element in a list.
-*/
+	+\ BIM React manages what gets rendered to the DOM. In order for this process to be fast and efficient, React needs a way to quickly know which items were changed, added, or removed. For this, React gives elements a special built-in prop named 'key'. A 'key' is a unique identifier that gives React a way to quickly and reliably identify an element in a list. */
 const iKarrayObject1 = [
 	{
 		"name": "Alpha",
@@ -74,23 +73,24 @@ const iKarrayObject1 = [
 	}
 ]; /*END iKarrayObject1 */	/*1+*/
 
-function IkcreateList (iKpropsObject1) {
+function IkCreateList (iKpropsObject1) {
 	return (
 		<ol>
 			{ 
 				iKpropsObject1.iKdata.map(function(iKelement){  /*2+*/
-					return ( <IkgetEachList iKindex={iKelement} key={iKelement.id} /> ); /*3+*/
+					return ( <IkGetEachList iKindex={iKelement} key={iKelement.id} /> ); /*3+*/
 				})
 			}
 		</ol>
-)};
+	);
+};
 
-function IkgetEachList (iKpropsObject2) {
+function IkGetEachList (iKpropsObject2) {
 	return (<li>{iKpropsObject2.iKindex.name}</li>) /*4+*/
 };
 
 ReactDOM.render(
-	<IkcreateList iKdata={ iKarrayObject1 } />,
+	<IkCreateList iKdata={ iKarrayObject1 } />,
 	iKdivContainer
 );
 /*OP 
@@ -98,11 +98,10 @@ ReactDOM.render(
 	Bravo
 	Charlie  (on the html list) */
 
-
-/*1+ it is always to include id property and insert a unique accending number for each data.
-	+\ usually id property is already set when collecting data from elsewhere.
-	+\ id property is associated with the key property that we are going to pass as props.
-	+\ BIM ensure each id is unique, and no duplicate, otherwise it cause problems down the line.
+/*1+ it is always to include 'id' property and insert a unique accending number for each data.
+	+\ usually 'id' property is already set when collecting data from elsewhere.
+	+\ 'id' property is associated with the 'key' property that we are going to pass as props.
+	+\ BIM ensure each 'id' is unique, and no duplicate, otherwise it cause problems down the line.
 2+ BIM it is much more simpler to loop in react using .map() and other js loop methods than it is using any of the for loops.
 	+\ iKBIM you can still loop using for loops, but you would need to wrap the for loop in a funcion invoke ( function(){}() ) for it to work. Plus you would need to create an empty flag array first to push the data within (using for loop), than return the array.
 		+\	%%%%%
@@ -117,12 +116,12 @@ function () {
 ...
 		=eg.
 			+\ iK therefore stick to .map() and similar shortcut loops because react are more in sync with them, than they are with for loops.
-3+ VIP you must pass property id to key props, when creating multiple elements using the data, react needs to identify for them as unique.
-	+\ iKVIP key is a special property name, and can only be pass through component callback function. It cannot be passed through normal jsx element.
-		+\ you will notice key property will have a special highlight on react developer tool too.
-		+\ BIM ensure you only pass id property number for each element you create.
-		+\ BIM you do not need to nothing else after you pass the key props through the component callback function, as react will do the rest to recognise it.
-4+ iK notice I have not use key property, as you do not need to do anything with it.
+3+ VIP you must pass property 'id' to 'key' props argument, when creating multiple elements using the data, react needs to identify for them as unique.
+	+\ iKVIP 'key' is a special property name, and can only be passed through component callback function as argument. It cannot be passed through normal jsx element.
+		+\ you will notice 'key' property will have a special highlight on react developer tool too.
+		+\ BIM ensure you only pass 'id' property number for each element you create.
+		+\ BIM you do not need to do nothing else after you pass the 'key' props through the component callback function, as react will do the rest to recognise it.
+4+ iK notice I have not use 'key' property, as you do not need to do anything with it.
 5+
 6+
 7+

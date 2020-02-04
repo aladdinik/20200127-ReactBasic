@@ -55,10 +55,8 @@
 /*state / component class function */
 /*VIP have to use class function to create a state.
 +\ class componenet can do everything component function can, but also able to use state.
-	+\ state allows you to change and keep up to date with changeing data.
-	
-*/
-class IkcomponentClass extends React.Component {  /*1+*/
+	+\ state allows you to change and keep up to date with changeing data. */
+class IkComponentClass extends React.Component {  /*1+*/
 	constructor() {		/*2+*/
 		super();		/*3+*/
 		this.state = {	/*4+*/
@@ -70,10 +68,10 @@ class IkcomponentClass extends React.Component {  /*1+*/
 		console.log(this);	/*7+*/
 		return ( <h1>{this.state.iKproperty}</h1> )  /*8+*/
 	}
-}; /*END IkcomonentClass */
+}; /*END IkComponentClass */
 
 ReactDOM.render(
-	<IkcomponentClass iKarg="iKargValue1" />,	/*9+*/
+	<IkComponentClass iKarg="iKargValue1" />,	/*9+*/
 	iKdivContainer
 );
 
