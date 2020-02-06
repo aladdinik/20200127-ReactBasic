@@ -78,7 +78,7 @@ function IkCreateList (iKpropsObject1) {
 		<ol>
 			{ 
 				iKpropsObject1.iKdata.map(function(iKelement){  /*2+*/
-					return ( <IkGetEachList iKindex={iKelement} key={iKelement.id} /> ); /*3+*/
+					return ( <IkGetEachList iKindex={iKelement} key={iKelement.id.toString()} /> ); /*3+*/
 				})
 			}
 		</ol>
@@ -120,6 +120,7 @@ function () {
 	+\ iKVIP 'key' is a special property name, and can only be passed through component callback function as argument. It cannot be passed through normal jsx element.
 		+\ you will notice 'key' property will have a special highlight on react developer tool too.
 		+\ BIM ensure you only pass 'id' property number for each element you create.
+			+\ VIP ensure you convert 'id' number into string using .toString() .
 		+\ BIM you do not need to do nothing else after you pass the 'key' props through the component callback function, as react will do the rest to recognise it.
 4+ iK notice I have not use 'key' property, as you do not need to do anything with it.
 5+

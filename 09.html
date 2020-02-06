@@ -52,9 +52,9 @@
 'use strict';
 
 
-/*simple Handling events / onClick event / using class method */
-class IkcomponentClass extends React.Component {
-	iKmethod1() {		/*1+*/
+/*Simple Handling events / onClick event / using class method */
+class IkComponentClass extends React.Component {
+	iKmethod1() {  /*1+*/
 		console.log("iKclicky"); /*2+*/
 	};
 
@@ -63,22 +63,22 @@ class IkcomponentClass extends React.Component {
 			<h1 onClick={ () => this.iKmethod1() }> 77 </h1> /*3+*/
 		);
 	};
-}; /*END IkcomonentClass */
+}; /*END IkComponentClass */
 
 ReactDOM.render(
-	<IkcomponentClass />,
+	<IkComponentClass />,
 	iKdivContainer
 );
 
 /*1+ a typical class method
-2+ "iKclicky" should occur on console when you click on the h1 element.
-3+ VIP onClick must be in camelCase in react.
+2+ "iKclicky" should occur on console when you click on the <h1> element.
+3+ VIP onClick event must be in camelCase in react, unlike in javascript event.
 3+ you do not have to use anonymous function to call the method.
-	+\ VIP however using arrow function bind 'this' keywork of the method to the react class object automatically. Which is why it is ideal to use.
+	+\ VIP however using arrow function will bind react class object 'this' to the method automatically which is why it is ideal to use.
 	+\ ...{ this.iKmethod1 }...  =eg. this is alternative option.
 		+\ BIM if you use this option than you must not use parenthesis to call the method otherwise the method will be called when the page loads, and not when the click event take place.
 			+\ BIM the callback would take place when the click event happens.
-		+\ not ideal to use this option because it does not bind 'this' to react class object.
+		+\ not ideal to use if the method codes requires 'this' for the callback to work.
 4+
 5+
 6+

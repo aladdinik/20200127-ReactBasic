@@ -53,61 +53,67 @@
 
 
 /*Updating or modifying state object / with the use of props callback argument / .setState() */
-const iKarrayObject1 = [	/*1+*/
+const iKarrayObject1 = [  /*1+*/
 	{
-		"name": "Alpha",
-		"inoffice": "iKvalue1",
+		iKname: "iKnameValue1",
+		iKoffice: "iKofficeValue1",
 		id: 1
 	},
 	{
-		"name": "Bravo",
-		"inoffice": "iKvalue2",
+		iKname: "iKnameValue2",
+		iKoffice: "iKofficeValue2",
 		id: 2
 	}
 ]; /*END iKarrayObject1 */
 
 
-class IkClassComponent extends React.Component {
-	state = {	/*2+*/
-		iKproperty1: this.props.iKarg1[0].inoffice,	/*3+*/
-		iKproperty2: this.props.iKarg1[1].name
-	};
+class IkComponentClass extends React.Component {
+	state = {  /*2+*/
+		iKproperty1: this.props.iKarg1[0].iKname, /*currently "iKnameValue1" */
+		iKproperty2: this.props.iKarg1[0].iKoffice /*currently "iKofficeValue1" */
+	}; /*3+*/
 
 	iKmethod1 = () => {
-		this.setState( iKpreviousState => {	/*4+*/
-			return {		/*5+*/
-				iKproperty1: 'iKreassignment1',  /*6+*/
-				iKproperty2: iKpreviousState.iKproperty2.toUpperCase()
-			};
+		this.setState( (iKpreviousState, iKpropsArg) => {	/*4+*/
+			return {  /*5+*/
+				iKproperty1: iKpropsArg.iKarg1[1].iKname, /*OP "iKnameValue2" */
+				iKproperty2: iKpreviousState.iKproperty2.toUpperCase() /*OP "IKOFFICEVALUE2" */
+			}; /*6+*/
 		});
 	};
 
 	render() {
 		return (
-			<h1 onClick={this.iKmethod1}> iKheaderElement </h1>
+			<div onClick={this.iKmethod1}>
+				<h1> {this.state.iKproperty1} </h1>
+				<p> {this.state.iKproperty2} </p>
+			</div>
 		);
 	};
-}; /*END IkclassComponent */
+}; /*END IkComponentClass */
 
 ReactDOM.render(
-	<IkClassComponent iKarg1={iKarrayObject1} />,
+	<IkComponentClass iKarg1={iKarrayObject1} />,
 	iKdivContainer
 );
 
 /*1+ just some mock data I will demo with.
-2+ notice I am setting state without the constructor method. However it is usually recommended to use the constructor method.
+2+ notice I am setting 'state' without the constructor method. However it is usually recommended to use the constructor method.
 3+ iK you can name or add as many property you need in state.
 3+ the argument is from the props object argument given in the component callback.
 4+ VIP you must use this.setState() method when you want to modify the state properties.
 	+\ VIP you cannot modify state object by normal reassignment, you must use .setState() .
-		+\ this.state.iKproperty1 = "iKreassignment1" =eg. this will not work.
-4+ VIP use anonymous function within .setState() to change state, as the resulted will take immediate effect.
+		+\ this.state.iKproperty1 = "iKreassignment1" =eg. this will not and best not work anywhere.
+4+ VIP use anonymous function as argument within .setState() to change state, as the resulted will take immediate effect.
 	+\ if you do not use the anonymous function than any change result of the state will behave asynchronously which can delay things.
-	+\ anonymous function is optional, but it is not recommended.
-	+\ VIP iKpreviousState is the same as this.state property, so use this when you need it for any reassignment.
-5+ VIP remember you have to return an object containing the properties you would like to modify.
+	+\ anonymous function is optional, but it is strongly recommended to use.
+	+\ VIP iKpreviousState optional parameter is the same as this.state property, so use this when you need it for any reassignment.
+	+\ BIM iKpropsArg optional parameter is the same as this.props but the updated version if any. Use this when possible.
+4+ .setState can use either function declaration or arrow function.
+5+ VIP remember you have to return an object containing the properties you would like to modify within state .
 	+\ alternatively when using arrow function, you can omit the 'return' keyword, but you must include parenthesis to wrap the state object.
-6+ choose the property value you would like to change in state.
+6+ You can choose as many or little properties you would like to modify within the state object.
+6+ iKBIM? however I read on comments that you might have to reassign state properies indirectly without mutating the properties. I think I used the right method here, but I am not too sure. Possible more research needs to be done.
 7+
 8+
 9+
