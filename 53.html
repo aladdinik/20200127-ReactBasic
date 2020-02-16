@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>53</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,6 +32,7 @@
 
 
 <!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -51,10 +52,58 @@
 'use strict';
 
 
-/**/
+/* Simple example of componentDidMount(){} and componentWillUnmount(){} */
+
+class IkMounting extends React.Component {
+	state = {
+		iKboolean: true,
+		iKtimer: "iKtimer"
+	};
+
+	componentDidMount() {
+//		console.log("iK componentDidMount succeeded");
+		this.iKtiming = setInterval(
+			this.iKmethodTimer,
+			1000
+		);
+	};
+
+	iKmethodTimer = () => {
+		this.setState( iKpreviousStateP => {
+			if (iKpreviousStateP.iKboolean) {
+				console.log(88);
+				return {iKboolean: false}
+			}
+				console.log(66);
+
+			return {iKboolean: true}
+		});
+
+//		if (!this.state.iKboolean) {
+//			console.log("iK working");
+//		}
+	};
 
 
+	componentWillUnmount() {
+		clearInterval(this.iKtiming);
+		console.log("iK componentWillUnmount succeeded");
+	};
 
+	render() {
+		return (
+			<div>
+				<button onClick={ this.iKmethodTimer }>{ this.state.iKboolean ? "start" : "stop" }</button>
+				<div>{this.state.iKtimer}</div>
+			</div>
+		);
+	};
+}; /*END IkMounting */
+
+ReactDOM.render(
+	<IkMounting />,
+	iKdivContainer
+);
 
 /*1+
 2+

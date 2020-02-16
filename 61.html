@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title>react practice</title>
+    <title></title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,13 +32,7 @@
 
 
 <!-- -->
-<div id='iKdivContainer'>iK will be overwritten by react</div>
 
-<!--
-<textarea>iKuser input</textarea>
-<input type="text">
-<button type="submit">iKsubmit</button>
--->
 
 <!---------------------- /main /////////////////////////-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -57,56 +51,10 @@
 'use strict';
 
 
-/*Simple submitting user text to textarea element / using change event which display on console too */
-/*I perhaps could have break it up to smaller component a bit more for easier read. And I should have included a top-level app to include component callback only.
-+\ iK I did this for fun and on my own, so you can have a quick look, and it works as intended. */
-class IkUserInput extends React.Component {
-	state = {
-		iKtextAreaValue: 'iKnothing submitted yet'
-	};
-
-	iKchangeEventText = () => {
-		const iKinput = document.getElementsByClassName('iKinputClass')[0];
-		console.log(iKinput.value);
-
-		this.setState( iKpreviousState => {
-			return {
-				iKtextAreaValue: iKinput.value
-			}
-		});
-	}; /*END iKchangeEventText */
+/**/
 
 
-	iKsubmitEventText = (event) => {
-		event.preventDefault();
 
-		iKtextId.textContent = this.state.iKtextAreaValue;
-	}; /*END iKsubmitEventText */
-
-
-	render() {
-		return (
-			<form onSubmit={this.iKsubmitEventText}>
-
-				<textarea id="iKtextId"></textarea>
-
-				<input
-					onChange={this.iKchangeEventText}
-					type="text"
-					className="iKinputClass"
-				/>
-
-				<button type="submit">iKsubmit</button>
-			</form>
-		);
-	};
-}; /*END IkUserInput */
-
-
-ReactDOM.render(
-	<IkUserInput />,
-	iKdivContainer
-);
 
 /*1+
 2+
