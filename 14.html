@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>14</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -32,6 +32,7 @@
 
 
 <!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -44,6 +45,10 @@
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+	<!-- propTypes cdn required for window object --> <!--1+-->
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+
 <!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
 <script src="zIK/03JS/kiK.js" type="text/javascript"></script>
 <script type="text/babel">
@@ -51,16 +56,45 @@
 'use strict';
 
 
-/**/
+/*propTypes - type checking, Validate Props with PropTypes / use of destructuring for prop object */
+/*iKBIM PropTypes does not seem to work on window browser despite me adding cdn and etc... 
+	+\ iK however it works perfectly fine one server (eg. create-react-app) 
++\ BIM if you do not use a type checker (like PropTypes / Typescript / Flow), than you might not get the right data type and it will fall silently. 
+	+\ type checker allows you to test props object property types and etc... */
 
+function IkFuncComponent ( {iKpropsString, iKpropsArray} ) { /*2+*/
+	return (
+		<div>{iKpropsString + iKpropsArray}</div>
+	);
+};
 
+IkFuncComponent.propTypes = { /*3+*/
+	iKpropsString: PropTypes.number, /*4+*/
+	iKpropsArray: PropTypes.arrayOf( PropTypes.string )  /*5+*/
+};
 
+ReactDOM.render(
+	<IkFuncComponent iKpropsString="iKstring" iKpropsArray={ ["iKarray"] } />, /*6+*/
+	iKdivContainer
+); /*OP "iKstringiKarray" on Dom */
 
-/*1+
-2+
-3+
-4+
-5+
+console.log(window.PropTypes) /*OP PropTypes object */
+console.log( IkFuncComponent.propTypes) /*OP you will see the props object used for IkFuncComponent */
+
+/*1+ cdn seem to be installed onto the browser but does not do as it should.
+	+\ iK? I think you have to also use PropTypes.checkPropTypes() for window browser for it to work.
+1+ for server like create-react-app you first do npm install --save prop-types (or developerment option) on terminal >> than import PropTypes from 'prop-types'; on .js files to use PropTypes .
+	+\ iK however create-react-app has PropType already install, so you only need to import it.
+2+ VIP it is still props object, but I used destructuring which makes it easier to read and understand.
+3+ BIM you must set up the PropType from the component you want to test out.
+	+\ Either on functional or class component.
+3+ VIP you lowercase 'p' and uppercase 'T' .
+4+ choose the props name you want to test out.
+	+\ iK see online documentation for more options and details.
+	+\ if props property is not matching than an error message will appear on the console.
+4+ VIP when setting props properties in the object, you must use uppercase for both 'P' and 'T' .
+5+ PropTypes can be very specific too, check online for more if needed.
+6+ iK notice iKpropsString value is suppose to be a number data type which will cause PropTypes to send out an error .
 6+
 7+
 8+

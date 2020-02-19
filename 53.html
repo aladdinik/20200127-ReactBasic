@@ -51,49 +51,60 @@
 /* + + + + + + + + + + + SCRIPT --------------------------*/
 'use strict';
 
+/*zzzz iK WILL ONLY UNMOUNT COMPONENT WHEN YOU REMOVE THE COMPONENT 
+iK still deciding if I should keep this or just type a small example in the doc */
 
-/* Simple example of componentDidMount(){} and componentWillUnmount(){} */
+/*Example of componentDidMount(){} and componentWillUnmount(){} */
 
 class IkMounting extends React.Component {
 	state = {
 		iKboolean: true,
-		iKtimer: "iKtimer"
+		iKtimer: 0
 	};
 
+
+	iKchangeiKboolean = () => {
+		this.setState( iKpreviousStateP => {
+			if (iKpreviousStateP.iKboolean) {
+				console.log("iK becomes false");
+				return {iKboolean: false}
+			}
+
+			console.log("iK becomes true");
+			return {iKboolean: true}
+		});
+	}; /*END iKchangeiKboolean */
+
+
 	componentDidMount() {
-//		console.log("iK componentDidMount succeeded");
-		this.iKtiming = setInterval(
-			this.iKmethodTimer,
-			1000
-		);
+		console.log("iK componentDidMount succeeded");
+		this.iKtiming = setInterval( () => {
+			this.iKmethodTimer();
+			console.log(this.state.iKtimer);
+		}, 1000);
 	};
 
 	iKmethodTimer = () => {
-		this.setState( iKpreviousStateP => {
-			if (iKpreviousStateP.iKboolean) {
-				console.log(88);
-				return {iKboolean: false}
-			}
-				console.log(66);
-
-			return {iKboolean: true}
-		});
-
-//		if (!this.state.iKboolean) {
-//			console.log("iK working");
-//		}
+		if (this.state.iKboolean) {
+			this.setState( iKpreviousStateP => {
+				const iKprevState = iKpreviousStateP.iKtimer + 1;
+				console.log(iKprevState);
+				return {iKtimer: iKprevState};
+			});
+		};
 	};
 
 
 	componentWillUnmount() {
-		clearInterval(this.iKtiming);
 		console.log("iK componentWillUnmount succeeded");
+		clearInterval(this.iKtiming);
 	};
+
 
 	render() {
 		return (
 			<div>
-				<button onClick={ this.iKmethodTimer }>{ this.state.iKboolean ? "start" : "stop" }</button>
+				<button onClick={ this.iKchangeiKboolean }>{ this.state.iKboolean ? "Stop" : "Start" }</button>
 				<div>{this.state.iKtimer}</div>
 			</div>
 		);

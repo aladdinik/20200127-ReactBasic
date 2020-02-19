@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title>52</title>
+    <title>12</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
 
@@ -34,11 +34,6 @@
 <!-- -->
 <div id='iKdivContainer'>iK will be overwritten by react</div>
 
-<!--
-<textarea>iKuser input</textarea>
-<input type="text">
-<button type="submit">iKsubmit</button>
--->
 
 <!---------------------- /main /////////////////////////-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -57,63 +52,33 @@
 'use strict';
 
 
-/* Controlled component / Submitting user text to textarea element / using onChange event to controlled flow and update state property */
-/*I perhaps could have break it up to smaller component for a bit more for easier read. And I should have included a top-level app to include component callback only.
-+\ conrolled component basically mean, keeping a close eye to any changes on an element you are watching, than using that value to update the state property.
-	+\ just like I am doing here, using the change event.
-*/
-class IkUserInput extends React.Component {
-	state = {
-		iKtextAreaValue: 'iKnothing submitted yet'
-	};
+/*Using React.createRef() */
+/* React.createRef() is to collect the dom node so you can use it how you see fit. eg. document.getElementById() , along with the others too.
+	+\ iKBIM ideal to use for <form> nested elements such as <input> .
++\ you can use React.createRef() with either functional or class function */
+function IkFuncComponent () {
+	const iKpara = React.createRef(); /*1+*/
 
-	iKchangeEventText = (event) => {
-		console.log(event.target.value);  /*1+*/
+	console.log(iKpara); /*OP {current: null} */ /*2+*/
 
-		this.setState( {	/*2+*/
-				iKtextAreaValue: event.target.value  /*3+*/
-		});
-	}; /*END iKchangeEventText */
-
-
-	iKsubmitEventText = (event) => {
-		event.preventDefault();
-
-		iKtextId.textContent = this.state.iKtextAreaValue;
-
-		event.target.children[1].value = "iKresetToEmptySpace"; /*4+*/
-	}; /*END iKsubmitEventText */
-
-
-	render() {
-		return (
-			<form onSubmit={ this.iKsubmitEventText }>
-
-				<textarea id="iKtextId"></textarea>
-
-				<input
-					onChange={ this.iKchangeEventText }
-					type="text"
-				/>
-
-				<button type="submit">iKsubmit</button>
-			</form>
-		);
-	};
-}; /*END IkUserInput */
-
+	return (
+		<div>
+			<h1>iKheader1</h1>
+			<p ref={iKpara}>iKparagraph</p>
+		</div>
+	); /*3+*/
+}; /*END IkFuncComponent */
 
 ReactDOM.render(
-	<IkUserInput />,
+	<IkFuncComponent />,
 	iKdivContainer
 );
 
-/*1+ event.target represent input[type=text] element.
-	+\ BIM which ever element is equipted with the change event than that element will always be the main element with event.target .
-2+ iK no need to use iKpreviousStateP parameter since we will not mutate or modify previous state value.
-	+\ we are only redeclaring the state property again.
-3+ iKVIP I am not able to redeclare property with event.target.value if I use anonymous function in .setState() for some reason.
-4+ event.target is the <form> element, and .childrent[1] is input[type="text"] .
+/*1+ create a variable name attach to React.createRef() .
+2+ iKBIM the value is null at the moment but I believe it requires an event trigger for you to be able to access all the property values within the dom node.
+	+\ iKpara.current.textContent  =egiK. this is how you would access the values of the node.
+3+ VIP you must use the ref attibute for React.createRef() variable to gain the dom node reference.
+4+
 5+
 6+
 7+
