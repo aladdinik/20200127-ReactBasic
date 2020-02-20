@@ -53,18 +53,18 @@
 
 
 /*Using React.createRef() */
-/* React.createRef() is to collect the dom node so you can use it how you see fit. eg. document.getElementById() , along with the others too.
+/* React.createRef() collects the dom node so you can use it how you see fit. eg.  similar to how document.getElementById() , along with the other methods too.
 	+\ iKBIM ideal to use for <form> nested elements such as <input> .
 +\ you can use React.createRef() with either functional or class function */
 function IkFuncComponent () {
-	const iKpara = React.createRef(); /*1+*/
+	const iKcreateRef = React.createRef(); /*1+*/
 
-	console.log(iKpara); /*OP {current: null} */ /*2+*/
+	console.log(iKcreateRef); /*OP {current: null} */ /*2+*/
 
 	return (
 		<div>
 			<h1>iKheader1</h1>
-			<p ref={iKpara}>iKparagraph</p>
+			<p ref={iKcreateRef}>iKparagraph</p>
 		</div>
 	); /*3+*/
 }; /*END IkFuncComponent */
@@ -74,9 +74,9 @@ ReactDOM.render(
 	iKdivContainer
 );
 
-/*1+ create a variable name attach to React.createRef() .
-2+ iKBIM the value is null at the moment but I believe it requires an event trigger for you to be able to access all the property values within the dom node.
-	+\ iKpara.current.textContent  =egiK. this is how you would access the values of the node.
+/*1+ creating a variable name storing React.createRef() .
+2+ iKBIM the value is null at first but it requires some sort of event trigger for you to be able to access all the property values within the dom node.
+	+\ iKcreateRef.current.textContent  =egiK. this is how you would access the values of the node after an event is triggered.
 3+ VIP you must use the ref attibute for React.createRef() variable to gain the dom node reference.
 4+
 5+

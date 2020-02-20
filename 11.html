@@ -67,7 +67,7 @@ const iKarrayObject1 = [  /*1+*/
 ]; /*END iKarrayObject1 */
 
 
-class IkComponentClass extends React.Component {
+class IkClassComponent extends React.Component {
 	state = {  /*2+*/
 		iKproperty1: this.props.iKarg1[0].iKname, /*currently "iKnameValue1" */
 		iKproperty2: this.props.iKarg1[0].iKoffice /*currently "iKofficeValue1" */
@@ -92,25 +92,25 @@ class IkComponentClass extends React.Component {
 			</div>
 		);
 	};
-}; /*END IkComponentClass */
+}; /*END IkClassComponent */
 
 ReactDOM.render(
-	<IkComponentClass iKarg1={iKarrayObject1} />,
+	<IkClassComponent iKarg1={iKarrayObject1} />,
 	iKdivContainer
 );
 
 /*1+ just some mock data I will demo with.
 2+ iK notice I am setting 'state' without the constructor method. There might not be any difference compared to constructor(){} 
 3+ iK you can name or add as many property you need in state.
-3+ the argument is from the props object argument given in the component callback.
+3+ the argument is from the props object argument given in the callback component.
 4+ VIP you must use this.setState() method when you want to modify the state properties.
-	+\ VIP you cannot modify state object by normal reassignment, you must use .setState() .
+	+\ VIP you should not modify state object by normal reassignment, you must use .setState() as it could effect performance.
 		+\ this.state.iKproperty1 = "iKreassignment1" =eg. this will not work and best not work anywhere.
 4+ VIP use anonymous function as argument within .setState() to change state, as the resulted will take immediate effect.
 	+\ if you do not use the anonymous function than any change result of the state could behave asynchronously which can delay things.
 	+\ BIM anonymous function is optional, but it is strongly recommended to use, especially when you need to modify using the iKpreviousStateP value.
 	+\ BIM iKpreviousStateP optional parameter is the same as this.state property.
-		+\ iKVIP but you should never mutate iKpreviousStateP , make a copy and redeclare the new value with the copy value.
+		+\ iKVIP but you should never mutate iKpreviousStateP , make a copy of iKpreviousStateP and redeclare the new value with the copied value.
 	+\ BIM iKpropsArgP optional parameter is the same as this.props but the updated version if any. Use this when possible.
 4+ .setState can use either function declaration or arrow function.
 5+ iKVIP make a copy of the previous state value of the properties you plan to modify/mutate.

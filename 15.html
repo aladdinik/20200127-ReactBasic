@@ -52,18 +52,19 @@
 /* + + + + + + + + + + + SCRIPT --------------------------*/
 'use strict';
 
-/*use of static PropTypes within class function */
-/*iKBIM again PropTypes does not seem to work on window browser despite me adding cdn and etc...
-+\ BIM using static propTypes = {} is optional, but you can still use the non-static version and write the validators after the class function. */
+/*Use of static PropTypes within class function / .isRequired */
+/*iKBIM again this PropTypes does not seem to work on window browser despite me adding cdn and etc...
++\ BIM using static propTypes = {} is optional, but you can still use the non-static version and write the validators after the class function.
++\ iK? not tested yet but you could use the .defaultProps too here. */
 
 class IkFuncComponent extends React.Component {
 	static propTypes = {  /*1+*/
 		iKpropsString: PropTypes.func,
-		iKpropsArray: PropTypes.arrayOf( PropTypes.string ) 
+		iKpropsArray: PropTypes.arrayOf( PropTypes.string ).isRequired /*2+*/
 	};
 
 	render() {
-		const {iKpropsString, iKpropsArray} = this.props; /*2+*/
+		const {iKpropsString, iKpropsArray} = this.props; /*3+*/
 
 		return (
 			<div>{iKpropsString}</div>
@@ -76,9 +77,10 @@ ReactDOM.render(
 	iKdivContainer
 ); /*OP "iKstring" on Dom */
 
-/*1+ notice you do not write static propTypes as a function with parenthesis, it is an object.
-2+ another way to destructure the props object.
-	+\ iKBIM you cannot seem to do this destructuring under constructor(){} method.
+/*1+ notice you do not write static propTypes as a function with parenthesis, it is a declared object literal.
+2+ .isRequired ensure the the prop does exist and was pass through, otherwise a warning error will occur.
+3+ another way to destructure the props object.
+	+\ iKBIM you cannot seem to do this destructuring under constructor(){} method as it will not work.
 3+
 4+
 5+

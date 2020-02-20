@@ -56,10 +56,11 @@
 'use strict';
 
 
-/*propTypes - type checking, Validate Props with PropTypes / use of destructuring for prop object */
-/*iKBIM PropTypes does not seem to work on window browser despite me adding cdn and etc... 
-	+\ iK however it works perfectly fine one server (eg. create-react-app) 
-+\ BIM if you do not use a type checker (like PropTypes / Typescript / Flow), than you might not get the right data type and it will fall silently. 
+/*propTypes - type checking, Validate Props with PropTypes / use of destructuring for prop object / .defaultProps */
+/*iKBIM this demo PropTypes does not seem to work on window browser despite me adding cdn and etc... 
+	+\ iK however it works perfectly fine on build server (eg. create-react-app) 
++\ type checker (like PropTypes / Typescript / Flow) is optional but it will ensure the right data type is passed through the props object, and easier to debug if the wrong data was passed through.
+	+\ but if you do not use type checker, the the wrong data type was passed through to props object, than it will fail silently, making it harder to locate where the problem is.
 	+\ type checker allows you to test props object property types and etc... */
 
 function IkFuncComponent ( {iKpropsString, iKpropsArray} ) { /*2+*/
@@ -73,8 +74,13 @@ IkFuncComponent.propTypes = { /*3+*/
 	iKpropsArray: PropTypes.arrayOf( PropTypes.string )  /*5+*/
 };
 
+IkFuncComponent.defaultProps = { /*6+*/
+	iKpropsString: "iKdefaultValue1",
+	iKpropsArray: ["iKdefaultValue2"]
+};
+
 ReactDOM.render(
-	<IkFuncComponent iKpropsString="iKstring" iKpropsArray={ ["iKarray"] } />, /*6+*/
+	<IkFuncComponent iKpropsString="iKstring" iKpropsArray={ ["iKarray"] } />, /*7+*/
 	iKdivContainer
 ); /*OP "iKstringiKarray" on Dom */
 
@@ -82,20 +88,22 @@ console.log(window.PropTypes) /*OP PropTypes object */
 console.log( IkFuncComponent.propTypes) /*OP you will see the props object used for IkFuncComponent */
 
 /*1+ cdn seem to be installed onto the browser but does not do as it should.
-	+\ iK? I think you have to also use PropTypes.checkPropTypes() for window browser for it to work.
-1+ for server like create-react-app you first do npm install --save prop-types (or developerment option) on terminal >> than import PropTypes from 'prop-types'; on .js files to use PropTypes .
+	+\ iK? I think you have to also use PropTypes.checkPropTypes() for window browser to work.
+1+ for build server like create-react-app you first do npm install --save prop-types (or developerment option) on terminal >> than import PropTypes from 'prop-types'; on .js files to use PropTypes .
 	+\ iK however create-react-app has PropType already install, so you only need to import it.
-2+ VIP it is still props object, but I used destructuring which makes it easier to read and understand.
+2+ BIM It is still props object, but I used destructuring which makes it easier to read and understand.
 3+ BIM you must set up the PropType from the component you want to test out.
 	+\ Either on functional or class component.
-3+ VIP you lowercase 'p' and uppercase 'T' .
+3+ VIP use lowercase 'p' and uppercase 'T' for .propTypes .
 4+ choose the props name you want to test out.
-	+\ iK see online documentation for more options and details.
+	+\ iK see online documentation for more options and details on validators to use.
 	+\ if props property is not matching than an error message will appear on the console.
-4+ VIP when setting props properties in the object, you must use uppercase for both 'P' and 'T' .
+4+ VIP when setting props properties in the object, PropTypes must use uppercase for both 'P' and 'T' .
 5+ PropTypes can be very specific too, check online for more if needed.
-6+ iK notice iKpropsString value is suppose to be a number data type which will cause PropTypes to send out an error .
-6+
+6+ BIM .defaultProps will give props object properties a default value if there are missing props argument that was suppose to pass to the funcional / class function.
+	+\ BIM it will also be typed checked too (eg. IkFuncComponent.propTypes), so ensure it is matching the validators too.
+	+\ BIM this gives you the option to not always passed props arguments on the callback component if not needed.
+7+ iK notice iKpropsString value is suppose to be a number data type which will cause PropTypes to send out an error .
 7+
 8+
 9+
