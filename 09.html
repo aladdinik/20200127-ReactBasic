@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- description -->
+<html lang="en"> <!-- 09 Simple Handling events / onClick event / using class method -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,14 +9,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title></title>
+    <title>09 Simple Handling events / onClick event / using class method</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
-
-
-/**/
-
-
 /*---------------------- /style //////////////////////////*/
 </style>
 </head>
@@ -31,7 +26,7 @@
 <!--+ + + + + + + + + + + MAIN --------------------------->
 
 
-<!-- -->
+<div id='iKdivContainer'>iK will be overwritten by react</div>
 
 
 <!---------------------- /main /////////////////////////-->
@@ -51,23 +46,33 @@
 'use strict';
 
 
-/**/
+/*Simple Handling events / onClick event / using class method */
+class IkComponentClass extends React.Component {
+	iKmethod1() {  /*1+*/
+		console.log("iKclicky"); /*2+*/
+	};
 
+	render() {
+		return (
+			<h1 onClick={ () => this.iKmethod1() }> 77 </h1> /*3+*/
+		);
+	};
+}; /*END IkComponentClass */
 
+ReactDOM.render(
+	<IkComponentClass />,
+	iKdivContainer
+);
 
-
-/*1+
-2+
-3+
-4+
-5+
-6+
-7+
-8+
-9+
-10+
-*/
-
+/*1+ a typical class method
+2+ "iKclicky" should occur on console when you click on the <h1> element.
+3+ VIP onClick event must be in camelCase in react, unlike in javascript event.
+3+ you do not have to use anonymous function to call the method.
+	+\ VIP however using arrow function will bind react class object 'this' to the method automatically which is why it is ideal to use.
+	+\ ...{ this.iKmethod1 }...  =eg. this is alternative option.
+		+\ BIM if you use this option than you must not use parenthesis to call the method otherwise the method will be called when the page loads, and not when the click event take place.
+			+\ BIM the callback would take place when the click event happens.
+		+\ not ideal to use if the method codes requires 'this' for the callback to work. */
 
  /*OP */
 /* **** d */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- description -->
+<html lang="en"> <!-- 02 ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,14 +9,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title>02</title>
+    <title>02 ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
-
-
-/**/
-
-
 /*---------------------- /style //////////////////////////*/
 </style>
 </head>
@@ -52,7 +47,7 @@
 'use strict';
 
 
-/*c2t ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree */
+/*ReactDOM.render() using jsx / with nested elements / will place element on the browser dom tree */
 const iKjsxElement = (	/*2+*/
 	<div title='iKtitle'>
 		<h1>iKhead string</h1>
@@ -67,23 +62,14 @@ ReactDOM.render(
 );
 
 
-/*1+ the element that react element will go into.
+/*1+ the element that react element will be appended to.
 2+ VIP you should use parenthesis when using jsx elements, as it will be easier to understand and type.
 	+\ it can still work without parenthesis.
 2+ VIP you can have only one parent jsx element tag stored in a variable.
 	+\ but you are allowed to have as many nested element as you want.
-3+ VIP any content within the iKparentNode element will be replaced by iKelement .
-	+\ BIM you will notice when the page loads, you will see content of iKparentNode first, and than being replace by iKelement.
-		+\ it is not ideal, so if possible try to avoid putting any content within iKparentNode element prior to react iKelement .
-4+
-5+
-6+
-7+
-8+
-9+
-10+
-*/
-
+3+ VIP any content within the iKparentNode element will be replaced by iKjsxElement .
+	+\ BIM you might notice when the page loads, you will see content of iKparentNode content first, and than being replace by iKjsxElement.
+		+\ it is not ideal, so if possible try to avoid putting any content within iKparentNode element prior to react iKjsxElement . */
 
  /*OP */
 /* **** d */
