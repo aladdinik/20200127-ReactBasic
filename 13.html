@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- description -->
+<html lang="en"> <!-- 13 Controlled component / Submitting user text value to textarea element / using onChange event to controlled flow and update state property -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,14 +9,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
     <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
 <!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
-    <title>13</title>
+    <title>13 Controlled component / Submitting user text value to textarea element / using onChange event to controlled flow and update state property</title>
 <style>
 /* + + + + + + + + + + + STYLE ---------------------------*/
-
-
-/**/
-
-
 /*---------------------- /style //////////////////////////*/
 </style>
 </head>
@@ -31,7 +26,6 @@
 <!--+ + + + + + + + + + + MAIN --------------------------->
 
 
-<!-- -->
 <div id='iKdivContainer'>iK will be overwritten by react</div>
 
 <!--
@@ -57,7 +51,7 @@
 'use strict';
 
 
-/* Controlled component / Submitting user text value to textarea element / using onChange event to controlled flow and update state property */
+/*Controlled component / Submitting user text value to textarea element / using onChange event to controlled flow and update state property */
 /*I perhaps could have break it up to smaller to component for easier read. And I should have included a top-level app to include component callback only.
 +\ conrolled component basically mean, keeping a close eye and controll to any changes on an element you are watching, than using that value to update the state property.
 	+\ just like I am doing here, using the change event. */
@@ -114,15 +108,7 @@ ReactDOM.render(
 	+\ we are only redeclaring the state property again.
 3+ iKVIP I am not able to redeclare property with event.target.value if I use anonymous function in .setState() for some reason. iK already tested but you can try again if you know something else to change that.
 4+ event.target is the <form> element, and .childrent[1] is input[type="text"] .
-	+\ BIM alternatively you could use event.currentTarget.reset() which will reset the value to the orginal value.
-5+
-6+
-7+
-8+
-9+
-10+
-*/
-
+	+\ BIM alternatively you could use event.currentTarget.reset() which will reset the value to the orginal value. */
 
  /*OP */
 /* **** d */
